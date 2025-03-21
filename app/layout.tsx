@@ -1,7 +1,7 @@
 import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
-import { Link } from "@nextui-org/link";
-import clsx from "clsx";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 import { Providers } from "./providers";
 
@@ -36,12 +36,12 @@ export default function RootLayout({
     <html suppressHydrationWarning lang="en">
       <head />
       <body
-        className={clsx(
+        className={cn(
           "min-h-screen bg-background font-sans antialiased",
           fontSans.variable,
         )}
       >
-        <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
+        <Providers>
           <div className="relative flex flex-col h-screen">
             <Navbar />
             <main className="container mx-auto max-w-7xl px-6 flex-grow">
@@ -49,13 +49,13 @@ export default function RootLayout({
             </main>
             <footer className="w-full flex items-center justify-center py-3">
               <Link
-                isExternal
-                className="flex items-center gap-1 text-current"
+                className="flex items-center gap-1 text-current hover:text-primary transition-colors"
                 href="https://www.devink.tech/"
-                title="devink"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <span className="text-default-600">Powered by</span>
-                <p className="text-primary">Devink</p>
+                <span className="text-muted-foreground">Powered by</span>
+                <p className="font-medium">Devink</p>
               </Link>
             </footer>
           </div>
