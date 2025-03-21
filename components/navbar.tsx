@@ -111,7 +111,7 @@ export const Navbar = () => {
         <div className="flex items-center gap-3">
           <ThemeSwitch />
           
-          <Button variant="primary" size="sm" className="hidden md:flex">
+          <Button variant="default" size="sm" className="hidden md:flex">
             <Phone size={16} className="mr-2" />
             Contactar
           </Button>

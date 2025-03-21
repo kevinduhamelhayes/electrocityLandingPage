@@ -1,7 +1,7 @@
-// components/BackgroundCarousel.js
+// components/BackgroundCarousel.tsx
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface BackgroundCarouselProps {}
@@ -17,24 +17,24 @@ const BackgroundCarousel: React.FC<BackgroundCarouselProps> = () => {
     const [isTransitioning, setIsTransitioning] = useState(false);
 
     // Navegación manual
-    const goToSlide = (index: number) => {
+    const goToSlide = useCallback((index: number) => {
         if (isTransitioning) return;
         setIsTransitioning(true);
         setCurrentIndex(index);
-        setTimeout(() => setIsTransitioning(false), 1000); // Coincidir con la duración de la transición
-    };
+        setTimeout(() => setIsTransitioning(false), 1000);
+    }, [isTransitioning]);
 
-    const goToPrevious = () => {
+    const goToPrevious = useCallback(() => {
         if (isTransitioning) return;
         const newIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
         goToSlide(newIndex);
-    };
+    }, [currentIndex, goToSlide, images.length, isTransitioning]);
 
-    const goToNext = () => {
+    const goToNext = useCallback(() => {
         if (isTransitioning) return;
         const newIndex = (currentIndex + 1) % images.length;
         goToSlide(newIndex);
-    };
+    }, [currentIndex, goToSlide, images.length, isTransitioning]);
 
     // Rotación automática
     useEffect(() => {
@@ -42,10 +42,10 @@ const BackgroundCarousel: React.FC<BackgroundCarouselProps> = () => {
             if (!isTransitioning) {
                 goToNext();
             }
-        }, 6000); // Tiempo más largo para mejor experiencia de usuario
+        }, 6000);
 
         return () => clearInterval(interval);
-    }, [currentIndex, isTransitioning]);
+    }, [goToNext, isTransitioning]);
 
     return (
         <div className="relative w-full h-full overflow-hidden">

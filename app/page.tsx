@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BackgroundCarousel from "@/components/BackgroundCarousel";
-import { ChevronRight, Zap, Shield, Clock, Tool, Award, CheckCircle } from "lucide-react";
+import { ChevronRight, Zap, Shield, Clock, Wrench, Award, CheckCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -25,7 +25,7 @@ const services = [
     description: "Atención rápida para solucionar sus problemas eléctricos en el menor tiempo posible.",
   },
   {
-    icon: <Tool className="h-12 w-12 text-primary" />,
+    icon: <Wrench className="h-12 w-12 text-primary" />,
     title: "Mantenimiento",
     description: "Mantenimiento preventivo y correctivo para garantizar el óptimo funcionamiento de sus instalaciones.",
   },
