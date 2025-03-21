@@ -8,6 +8,7 @@ import { Providers } from "./providers";
 import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
 import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
   title: {
@@ -33,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html suppressHydrationWarning lang="en">
+    <html suppressHydrationWarning lang="es">
       <head />
       <body
         className={cn(
@@ -42,22 +43,12 @@ export default function RootLayout({
         )}
       >
         <Providers>
-          <div className="relative flex flex-col h-screen">
+          <div className="relative flex flex-col min-h-screen">
             <Navbar />
-            <main className="container mx-auto max-w-7xl px-6 flex-grow">
+            <main className="flex-grow">
               {children}
             </main>
-            <footer className="w-full flex items-center justify-center py-3">
-              <Link
-                className="flex items-center gap-1 text-current hover:text-primary transition-colors"
-                href="https://www.devink.tech/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="text-muted-foreground">Powered by</span>
-                <p className="font-medium">Devink</p>
-              </Link>
-            </footer>
+            <Footer />
           </div>
         </Providers>
       </body>
