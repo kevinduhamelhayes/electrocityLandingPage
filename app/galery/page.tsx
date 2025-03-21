@@ -79,44 +79,46 @@ export default function GalleryPage() {
   ];
 
   return (
-    <div className="container mx-auto px-6 py-10">
-      <h1 className={title({ size: "lg" })}>Galería de Trabajos</h1>
-      <p className="text-lg mt-4 mb-8">
-        Explora algunos de nuestros trabajos realizados en Rosario y alrededores. 
-        Nos especializamos en instalaciones residenciales, comerciales e industriales.
-      </p>
-      
-      {/* Grid de imágenes */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {works.map((work) => (
-          <div 
-            key={work.id} 
-            className="bg-content1 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all"
-          >
-            <div className="relative h-64 w-full">
-              {/* Usando las imágenes reales del directorio public */}
-              <div 
-                className="absolute inset-0"
-                style={{
-                  backgroundImage: `url(${work.imagePath})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                }}
-              />
-            </div>
-            <div className="p-4">
-              <h3 className="text-lg font-bold">{work.title}</h3>
-              <p className="text-sm text-gray-500 mt-1">{work.description}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-      
-      <div className="mt-10 text-center">
-        <p className="text-lg">
-          ¿Necesitas un trabajo similar? No dudes en contactarnos para una cotización.
+    <section className="w-full py-12 md:py-16 lg:py-20">
+      <div className="container px-4 md:px-6 mx-auto max-w-6xl">
+        <h1 className={title({ size: "lg" }) + " mb-4"}>Galería de Trabajos</h1>
+        <p className="text-lg text-muted-foreground mb-8 max-w-3xl">
+          Explora algunos de nuestros trabajos realizados en Rosario y
+          alrededores. Nos especializamos en instalaciones residenciales,
+          comerciales e industriales.
         </p>
+
+        {/* Grid de imágenes optimizado */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          {works.map((work) => (
+            <div
+              key={work.id}
+              className="bg-card rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all flex flex-col h-full border border-border"
+            >
+              <div className="relative aspect-video w-full overflow-hidden">
+                <Image
+                  src={work.imagePath}
+                  alt={work.title}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover transition-transform hover:scale-105 duration-300"
+                />
+              </div>
+              <div className="p-4 flex flex-col flex-grow">
+                <h3 className="text-lg font-bold">{work.title}</h3>
+                <p className="text-sm text-muted-foreground mt-1">{work.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-12 text-center bg-muted p-6 rounded-lg">
+          <p className="text-lg">
+            ¿Necesitas un trabajo similar? No dudes en contactarnos para una
+            cotización.
+          </p>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
