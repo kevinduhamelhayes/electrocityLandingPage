@@ -1,10 +1,12 @@
 // components/BackgroundCarousel.js
 'use client';
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-const BackgroundCarousel = () => {
+interface BackgroundCarouselProps {}
+
+const BackgroundCarousel: React.FC<BackgroundCarouselProps> = () => {
     const images = [
         "/electricidad1.jpg",
         "/electricidad2.jpg",

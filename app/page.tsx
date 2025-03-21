@@ -37,19 +37,19 @@ const testimonials = [
     name: "Carolina Méndez",
     role: "Propietaria de Vivienda",
     comment: "Excelente servicio, muy profesional y puntual. Solucionó todos los problemas eléctricos de mi casa de manera rápida y eficiente.",
-    image: "/testimonial-1.jpg", // Añadir imágenes de testimonios
+    image: "https://randomuser.me/api/portraits/women/1.jpg", // Usando una imagen de placeholder
   },
   {
     name: "Martín Rodríguez",
     role: "Gerente de Local Comercial",
     comment: "Contratamos sus servicios para la instalación eléctrica de nuestro nuevo local y quedamos muy satisfechos con el resultado y la calidad del trabajo.",
-    image: "/testimonial-2.jpg",
+    image: "https://randomuser.me/api/portraits/men/1.jpg",
   },
   {
     name: "Luciana Torres",
     role: "Administradora de Edificio",
     comment: "Realizan un excelente trabajo de mantenimiento en nuestro edificio. Siempre responden rápido a las emergencias y son muy profesionales.",
-    image: "/testimonial-3.jpg",
+    image: "https://randomuser.me/api/portraits/women/2.jpg",
   },
 ];
 
@@ -147,10 +147,10 @@ export default function Home() {
 
             <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl">
               <Image 
-                src="/electrician-working.jpg" 
+                src="/electricidad4.jpg" 
                 alt="Electricista trabajando" 
-                layout="fill"
-                objectFit="cover"
+                fill
+                style={{ objectFit: 'cover' }}
                 className="rounded-lg"
               />
             </div>
@@ -183,8 +183,10 @@ export default function Home() {
                     <Image 
                       src={testimonial.image} 
                       alt={testimonial.name}
-                      layout="fill"
-                      objectFit="cover"
+                      width={48}
+                      height={48}
+                      className="object-cover"
+                      unoptimized
                     />
                   </div>
                   <div>
