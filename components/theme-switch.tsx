@@ -16,9 +16,7 @@ export interface ThemeSwitchProps {
   className?: string;
 }
 
-export const ThemeSwitch: React.FC<ThemeSwitchProps> = ({
-  className,
-}) => {
+export const ThemeSwitch: React.FC<ThemeSwitchProps> = ({ className }) => {
   const { setTheme, theme } = useTheme();
 
   return (

@@ -7,10 +7,7 @@ export const Counter = () => {
   const [count, setCount] = useState(0);
 
   return (
-    <Button 
-      onClick={() => setCount(count + 1)}
-      className="rounded-full"
-    >
+    <Button onClick={() => setCount(count + 1)} className="rounded-full">
       Count is {count}
     </Button>
   );

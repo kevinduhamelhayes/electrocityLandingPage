@@ -1,14 +1,13 @@
 import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
-import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 import { Providers } from "./providers";
 
 import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
-import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { Header } from "@/components/layout/header";
 
 export const metadata: Metadata = {
   title: {
@@ -17,15 +16,48 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      {
+        url: "/icons/favicon-32x32.png",
+        sizes: "32x32",
+        type: "image/png",
+      },
+      {
+        url: "/icons/favicon-16x16.png",
+        sizes: "16x16",
+        type: "image/png",
+      }
+    ],
+    apple: {
+      url: "/icons/apple-touch-icon.png",
+      sizes: "180x180",
+    },
+    shortcut: "/favicon.ico",
+  },
+  manifest: "/site.webmanifest",
+  openGraph: {
+    type: "website",
+    locale: "es_AR",
+    url: "https://electricistarosario.com",
+    title: siteConfig.name,
+    description: siteConfig.description,
+    siteName: siteConfig.name,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.name,
+    description: siteConfig.description,
   },
 };
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" },
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#121212" },
   ],
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
 };
 
 export default function RootLayout({
@@ -44,10 +76,8 @@ export default function RootLayout({
       >
         <Providers>
           <div className="relative flex flex-col min-h-screen">
-            <Navbar />
-            <main className="flex-grow">
-              {children}
-            </main>
+            <Header />
+            <main className="flex-grow">{children}</main>
             <Footer />
           </div>
         </Providers>
