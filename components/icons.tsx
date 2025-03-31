@@ -141,3 +141,27 @@ export const SearchIcon = (props: IconSvgProps) => (
     />
   </svg>
 );
+
+export const HomeIcon: React.FC<IconSvgProps> = ({
+  size = 24,
+  width,
+  height,
+  ...props
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    height={size || height}
+    width={size || width}
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    {...props}
+  >
+    <path d="M14.5 12.5L18 9L12 3L6 9L9.5 12.5" />
+    <path d="M18 9v10a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V9" />
+    <path d="M15 14v3" />
+  </svg>
+);
